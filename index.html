@@ -72,6 +72,7 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     .btn:hover,
     .btn:focus {
       background-color: #e6b900;
@@ -105,6 +106,7 @@
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
+
     .whatsapp a:hover,
     .whatsapp a:focus {
       background-color: #1ebe57;
@@ -117,7 +119,8 @@
       gap: 1rem;
     }
 
-    form input, form textarea {
+    form input,
+    form textarea {
       padding: 0.8rem;
       border-radius: 5px;
       border: none;
@@ -134,10 +137,55 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     form button:hover,
     form button:focus {
       background-color: #e6b900;
       outline: none;
+    }
+
+    /* Tabs and Gallery Styles */
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tab-button {
+      background: #333;
+      color: #fef9c3;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab-button.active {
+      background-color: #facc15;
+      color: #0d0e18;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
@@ -173,16 +221,47 @@
     <p><em>"Transformed our kitchen beautifully — highly recommend!"</em> — Mark S.</p>
   </section>
 
+  <section class="section" aria-labelledby="work-title">
+    <h2 id="work-title">Our Work</h2>
+    <div class="tabs" role="tablist">
+      <button class="tab-button active" data-tab="kitchen">Kitchen</button>
+      <button class="tab-button" data-tab="bathroom">Bathroom</button>
+      <button class="tab-button" data-tab="painting">Painting</button>
+      <button class="tab-button" data-tab="other">Other Jobs</button>
+    </div>
+
+    <div class="tab-content active" id="kitchen">
+      <div class="gallery">
+        <img src="images/kitchen1.jpg" alt="Kitchen renovation 1">
+        <img src="images/kitchen2.jpg" alt="Kitchen renovation 2">
+      </div>
+    </div>
+
+    <div class="tab-content" id="bathroom">
+      <div class="gallery">
+        <img src="images/bathroom1.jpg" alt="Bathroom remodeling 1">
+        <img src="images/bathroom2.jpg" alt="Bathroom remodeling 2">
+      </div>
+    </div>
+
+    <div class="tab-content" id="painting">
+      <div class="gallery">
+        <img src="images/painting1.jpg" alt="Painting work 1">
+        <img src="images/painting2.jpg" alt="Painting work 2">
+      </div>
+    </div>
+
+    <div class="tab-content" id="other">
+      <div class="gallery">
+        <img src="images/other1.jpg" alt="Furniture assembly 1">
+        <img src="images/other2.jpg" alt="Small repairs 2">
+      </div>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="contactform-title">
     <h2 id="contactform-title">Contact Form</h2>
-    <!--
-      Рекомендуется подключить серверную обработку или сторонний сервис для формы, т.к. mailto: работает нестабильно.
-      Например, Formspree (https://formspree.io) или Netlify Forms.
-    -->
-    <form 
-      action="#" 
-      method="POST" 
-      aria-label="Contact form to send message">
+    <form action="#" method="POST" aria-label="Contact form to send message">
       <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
       <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
       <textarea name="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
@@ -193,5 +272,22 @@
   <footer>
     &copy; 2025 ValKhyl Handyman & Renovation Services • Winnipeg, MB
   </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(tab => tab.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
