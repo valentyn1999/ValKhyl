@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ValKhyl Handyman & Renovation Services</title>
-  <meta name="description" content="ValKhyl Handyman & Renovation Services in Winnipeg, MB. Interior/exterior renovations, painting, flooring, remodeling, plumbing, and more." />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
       margin: 0;
@@ -70,13 +68,6 @@
       display: inline-block;
       margin: 1rem 0;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover,
-    .btn:focus {
-      background-color: #e6b900;
-      outline: none;
     }
 
     .contact a {
@@ -104,13 +95,6 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .whatsapp a:hover,
-    .whatsapp a:focus {
-      background-color: #1ebe57;
-      outline: none;
     }
 
     form {
@@ -119,8 +103,7 @@
       gap: 1rem;
     }
 
-    form input,
-    form textarea {
+    form input, form textarea {
       padding: 0.8rem;
       border-radius: 5px;
       border: none;
@@ -135,16 +118,8 @@
       padding: 0.8rem;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
-    form button:hover,
-    form button:focus {
-      background-color: #e6b900;
-      outline: none;
-    }
-
-    /* Tabs and Gallery Styles */
     .tabs {
       display: flex;
       gap: 1rem;
@@ -175,17 +150,9 @@
       display: block;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    .tab-content p {
+      color: #fef9c3;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -193,18 +160,18 @@
   <header>
     <img src="logo.png" alt="ValKhyl Logo" />
     <h1>ValKhyl Handyman & Renovation Services</h1>
-    <div class="contact" aria-label="Contact information">
+    <div class="contact">
       📍 Winnipeg, MB<br />
-      📞 <a href="tel:+12042966762" aria-label="Phone number +1 (204) 296-67-62" title="Call us">+1 (204) 296-67-62</a><br />
-      📧 <a href="mailto:handyman@valkhyl.com" aria-label="Email address" title="Send email">handyman@valkhyl.com</a>
+      📞 <a href="tel:+12042966762">+1 (204) 296-67-62</a><br />
+      📧 <a href="mailto:handyman@valkhyl.com">handyman@valkhyl.com</a>
     </div>
     <div class="whatsapp">
-      <a href="https://wa.me/12042966762" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp">📱 Chat on WhatsApp</a>
+      <a href="https://wa.me/12042966762" target="_blank">📱 Chat on WhatsApp</a>
     </div>
   </header>
 
-  <section class="section" aria-labelledby="services-title">
-    <h2 id="services-title">Our Services</h2>
+  <section class="section">
+    <h2>Our Services</h2>
     <ul>
       <li>Interior & exterior renovations</li>
       <li>Drywall, painting, and finishing</li>
@@ -215,57 +182,45 @@
     </ul>
   </section>
 
-  <section class="section" aria-labelledby="reviews-title">
-    <h2 id="reviews-title">Customer Reviews</h2>
+  <section class="section">
+    <h2>Customer Reviews</h2>
     <p><em>"Professional, fast, and reliable. Couldn’t be happier!"</em> — Lisa T.</p>
     <p><em>"Transformed our kitchen beautifully — highly recommend!"</em> — Mark S.</p>
   </section>
 
-  <section class="section" aria-labelledby="work-title">
-    <h2 id="work-title">Our Work</h2>
-    <div class="tabs" role="tablist">
+  <section class="section">
+    <h2>Our Work</h2>
+    <div class="tabs">
       <button class="tab-button active" data-tab="kitchen">Kitchen</button>
       <button class="tab-button" data-tab="bathroom">Bathroom</button>
       <button class="tab-button" data-tab="painting">Painting</button>
-      <button class="tab-button" data-tab="other">Other Jobs</button>
+      <button class="tab-button" data-tab="other">Other</button>
     </div>
 
     <div class="tab-content active" id="kitchen">
-      <div class="gallery">
-        <img src="images/kitchen1.jpg" alt="Kitchen renovation 1">
-        <img src="images/kitchen2.jpg" alt="Kitchen renovation 2">
-      </div>
+      <p>We fully renovated modern kitchens with new cabinets, countertops, lighting, and tile backsplash. High-quality finishes and attention to detail in every project.</p>
     </div>
 
     <div class="tab-content" id="bathroom">
-      <div class="gallery">
-        <img src="images/bathroom1.jpg" alt="Bathroom remodeling 1">
-        <img src="images/bathroom2.jpg" alt="Bathroom remodeling 2">
-      </div>
+      <p>Upgraded bathrooms with walk-in showers, tile flooring, and updated plumbing. Custom vanities and energy-efficient fixtures.</p>
     </div>
 
     <div class="tab-content" id="painting">
-      <div class="gallery">
-        <img src="images/painting1.jpg" alt="Painting work 1">
-        <img src="images/painting2.jpg" alt="Painting work 2">
-      </div>
+      <p>Interior and exterior painting using premium materials. We handle surface prep, priming, and multi-coat coverage for smooth, long-lasting finishes.</p>
     </div>
 
     <div class="tab-content" id="other">
-      <div class="gallery">
-        <img src="images/other1.jpg" alt="Furniture assembly 1">
-        <img src="images/other2.jpg" alt="Small repairs 2">
-      </div>
+      <p>Furniture assembly, minor repairs, shelving, lighting installation, and more. No job is too small — we’re here to help with anything around your home.</p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="contactform-title">
-    <h2 id="contactform-title">Contact Form</h2>
-    <form action="#" method="POST" aria-label="Contact form to send message">
-      <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
-      <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
-      <textarea name="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
-      <button type="submit" class="btn" aria-label="Send message">Send Message</button>
+  <section class="section">
+    <h2>Contact Form</h2>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </section>
 
