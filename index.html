@@ -483,6 +483,26 @@
             resize: vertical;
         }
 
+        /* Form Success/Error Messages */
+        .form-status {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .form-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
         /* Footer Styles */
         footer {
             background-color: var(--primary);
@@ -806,7 +826,8 @@
                     <p>We provide handyman services throughout Winnipeg, including Downtown, St. James, River Heights, and surrounding neighborhoods.</p>
                 </div>
                 <div class="contact-form">
-                    <form action="#" method="POST">
+                    <form action="https://formspree.io/f/mkgbnnnv" method="POST" id="contact-form">
+                        <div id="form-status" class="form-status"></div>
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required>
@@ -890,5 +911,50 @@
             </div>
         </div>
     </footer>
+
+    <!-- Form Submission Script -->
+    <script>
+        const form = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    formStatus.textContent = 'Thank you! Your message has been sent.';
+                    formStatus.className = 'form-status success';
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                formStatus.textContent = 'Oops! There was a problem submitting your form. Please try again.';
+                formStatus.className = 'form-status error';
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+                
+                // Scroll to show the status message
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+    </script>
 </body>
 </html>
